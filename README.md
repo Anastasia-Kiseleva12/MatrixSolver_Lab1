@@ -44,9 +44,9 @@ $$
 Для матрицы вычисляются числа обусловленности:
 
 $$
-\operatorname{cond}_1(A), \qquad
-\operatorname{cond}*2(A), \qquad
-\operatorname{cond}*\infty(A)
+\mathrm{cond}_1(A), \qquad
+\mathrm{cond}2(A), \qquad
+\mathrm{cond}\infty(A)
 $$
 
 Это позволяет оценить чувствительность решения к погрешностям исходных данных.
