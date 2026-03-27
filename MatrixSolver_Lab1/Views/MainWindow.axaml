@@ -1,0 +1,75 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:MatrixSolver_Lab1.ViewModels"
+        mc:Ignorable="d"
+        d:DesignWidth="1000"
+        d:DesignHeight="700"
+        x:Class="MatrixSolver_Lab1.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="Лабораторная работа №1 — Прямые методы решения СЛАУ">
+
+	<ScrollViewer>
+		<StackPanel Margin="20" Spacing="12">
+
+			<TextBlock Text="Лабораторная работа №1"
+                       FontSize="24"
+                       FontWeight="Bold"/>
+
+			<StackPanel Spacing="10">
+				<Button Content="Сгенерировать систему"
+						Command="{Binding GenerateSystemCommand}"
+						Width="300"/>
+
+				<Button Content="Сгенерировать систему для доп. задания"
+						Command="{Binding GenerateBadSystemCommand}"
+						Width="300"/>
+
+				<Button Content="Сгенерировать ОЧЕНЬ плохуя систему для доп. задания"
+						Command="{Binding GenerateVeryBadSystemCommand}"
+						Width="300"/>
+
+				<Button Content="Решить простым методом Гаусса"
+						Command="{Binding SolveWithSimpleGaussCommand}"
+						Width="300"/>
+
+				<Button Content="Гаусс с выбором по столбцу"
+						Command="{Binding SolveWithPivotGaussCommand}"
+						Width="300"/>
+
+				<Button Content="Гаусс с выбором по всей матрице"
+						Command="{Binding SolveWithFullPivotGaussCommand}"
+						Width="300"/>
+
+				<Button Content="Решить всеми методами"
+						Command="{Binding SolveAllCommand}"
+						Width="300"/>
+
+				<Button Content="Эксперимент с возмущениями"
+						Command="{Binding RunPerturbationExperimentCommand}"
+						Width="300"/>
+
+				<Button Content="Обратная матрица и число обусловленности"
+						Command="{Binding ShowInverseAndConditionNumbersCommand}"
+						Width="300"/>
+			</StackPanel>
+
+			<TextBlock Text="Матрица A:" FontSize="18" FontWeight="SemiBold"/>
+			<Border BorderThickness="1" Padding="10">
+				<TextBlock Text="{Binding MatrixText}" FontFamily="Consolas"/>
+			</Border>
+
+			<TextBlock Text="Вектор b:" FontSize="18" FontWeight="SemiBold"/>
+			<Border BorderThickness="1" Padding="10">
+				<TextBlock Text="{Binding VectorText}" FontFamily="Consolas"/>
+			</Border>
+
+			<TextBlock Text="Результат:" FontSize="18" FontWeight="SemiBold"/>
+			<Border BorderThickness="1" Padding="10">
+				<TextBlock Text="{Binding SolutionText}" FontFamily="Consolas"/>
+			</Border>
+
+		</StackPanel>
+	</ScrollViewer>
+</Window>
