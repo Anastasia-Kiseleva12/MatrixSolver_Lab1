@@ -193,7 +193,7 @@ public partial class MainWindowViewModel : ViewModelBase
         SolutionText = sb.ToString();
     }
 
-    private static void SolveAndAppend(StringBuilder sb, string title, Func<double[]> solver)
+    private void SolveAndAppend(StringBuilder sb, string title, Func<double[]> solver)
     {
         sb.AppendLine(title);
 
@@ -205,6 +205,11 @@ public partial class MainWindowViewModel : ViewModelBase
             {
                 sb.AppendLine($"x{i + 1} = {solution[i]:F6}");
             }
+
+            var residual = ResidualCalculator.Calculate(_currentSystem!.A, solution, _currentSystem.B);
+            var residualNorm = ResidualCalculator.InfinityNorm(residual);
+
+            sb.AppendLine($"||Ax - b||∞ = {residualNorm:E6}");
         }
         catch (Exception ex)
         {
