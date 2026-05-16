@@ -53,6 +53,20 @@
 				<Button Content="Обратная матрица и число обусловленности"
 						Command="{Binding ShowInverseAndConditionNumbersCommand}"
 						Width="300"/>
+				<Button Content="Сгенерировать симметричную систему"
+        Command="{Binding GenerateSymmetricSystemCommand}" />
+
+				<Button Content="Метод Якоби"
+						Command="{Binding SolveWithJacobiCommand}" />
+
+				<Button Content="Метод Зейделя"
+						Command="{Binding SolveWithSeidelCommand}" />
+
+				<Button Content="Сравнить итерационные методы"
+						Command="{Binding SolveIterativeMethodsCommand}" />
+
+				<Button Content="Спектральная задача"
+						Command="{Binding SolveSpectralProblemCommand}" />
 			</StackPanel>
 
 			<TextBlock Text="Матрица A:" FontSize="18" FontWeight="SemiBold"/>
@@ -67,7 +81,12 @@
 
 			<TextBlock Text="Результат:" FontSize="18" FontWeight="SemiBold"/>
 			<Border BorderThickness="1" Padding="10">
-				<TextBlock Text="{Binding SolutionText}" FontFamily="Consolas"/>
+				<TextBox Text="{Binding SolutionText}"
+         IsReadOnly="True"
+         AcceptsReturn="True"
+         TextWrapping="Wrap"
+         FontFamily="Consolas"
+         MinHeight="250" />
 			</Border>
 
 		</StackPanel>

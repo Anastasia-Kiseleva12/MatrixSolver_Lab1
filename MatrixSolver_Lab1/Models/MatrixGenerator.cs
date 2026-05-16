@@ -114,5 +114,37 @@ namespace MatrixSolver_Lab1.Models
 
             return new LinearSystem(a, b);
         }
+
+        public static LinearSystem GenerateSymmetric(int n = 6, double minValue = -5, double maxValue = 5)
+        {
+            var a = new double[n, n];
+            var b = new double[n];
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = i; j < n; j++)
+                {
+                    double value = NextDouble(minValue, maxValue);
+                    a[i, j] = value;
+                    a[j, i] = value;
+                }
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                double rowSum = 0;
+
+                for (int j = 0; j < n; j++)
+                {
+                    if (i != j)
+                        rowSum += Math.Abs(a[i, j]);
+                }
+
+                a[i, i] = rowSum + NextDouble(5, 10);
+                b[i] = NextDouble(minValue, maxValue);
+            }
+
+            return new LinearSystem(a, b);
+        }
     }
 }
